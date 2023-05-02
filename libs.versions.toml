@@ -1,5 +1,5 @@
 [versions]
-com-android-application = "7.4.2"
+com-android-application = "8.0.0"
 detekt = "1.22.0"
 hilt = "2.44"
 kotlin = "1.8.0"
