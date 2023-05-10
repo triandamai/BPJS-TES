@@ -36,7 +36,7 @@
     <string name="text_button_confirmation_date_of_birth_bottom_sheet">Pilih</string>
     <string name="text_button_confirmation_gender_bottom_sheet">Pilih</string>
 
-<!--    Input PIN dan Create PIN-->
+    <!--    Input PIN dan Create PIN-->
     <string name="text_input_pin">Masukkan PIN</string>
     <string name="label_forgotpin_inputpin">Lupa PIN?</string>
     <string name="text_create_pin">Buat kode PIN kamu</string>
@@ -261,7 +261,7 @@
     <string name="text_tab_academy">Academy</string>
     <!--    end change password-->
 
-<!--    screen filter feed-->
+    <!--    screen filter feed-->
     <string name="button_text_choose">Pilih</string>
     <string name="title_filter_post">Filter Postingan</string>
     <string name="button_reset">Reset</string>
@@ -269,7 +269,7 @@
     <string name="subtitle_followed">Followed</string>
     <string name="subtitle_allin">Semua</string>
     <string name="subtitle_new">Terbaru</string>
-<!--    end screen filter feed-->
+    <!--    end screen filter feed-->
 
     <!--    bottom sheet select account-->
     <string name="text_bottom_sheet_account">Akun</string>
@@ -300,6 +300,12 @@
     <string name="text_button_select_audience_create_post">Pilih</string>
     <string name="text_income">+%1$s</string>
     <string name="text_expenses">-%1$s</string>
+    <string name="title_activity_xml">XmlActivity</string>
+    <string name="title_activity_compose">ComposeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_signin">Login</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
     <!--    end create post-->
 
 </resources>

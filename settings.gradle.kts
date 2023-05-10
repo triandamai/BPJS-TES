@@ -31,6 +31,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "BudgetKu"
+rootProject.name = "BPJS_TK"
 include(":androidApp")
 include(":data")

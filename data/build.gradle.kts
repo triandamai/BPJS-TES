@@ -75,8 +75,8 @@ dependencies {
 
 sqldelight{
     databases{
-        create("Database"){
-            packageName.set("com.bluehabit.budgetku.db")
+        create("BpjsDatabase"){
+            packageName.set("com.bluehabit.bpjs.db")
         }
     }
 }
