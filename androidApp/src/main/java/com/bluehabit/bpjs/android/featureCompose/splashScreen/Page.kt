@@ -48,7 +48,7 @@ internal fun ScreenSplash(
     state: ApplicationState,
 ) = UIWrapper<SplashViewModel>(appState = state) {
     LaunchedEffect(key1 = this, block = {
-
+        dispatch(SplashEvent.CheckSession)
     })
     Column(
         modifier = Modifier
@@ -58,7 +58,7 @@ internal fun ScreenSplash(
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            painter = painterResource(id = R.drawable.logo_budgetku_full),
+            painter = painterResource(id = R.drawable.logo_jmo),
             contentDescription = "Logo App",
             modifier = Modifier
                 .height(104.dp)

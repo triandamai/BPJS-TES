@@ -38,10 +38,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         setBinding(binding(inflater,container,savedInstanceState))
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
         lifecycleScope.launch {
             viewModel.uiState.collect {
-                textView.text = it
+
             }
         }
         return root

@@ -26,7 +26,7 @@ import com.bluehabit.bpjs.android.ui.Grey500
 
 sealed class DashboardBottomNavigationMenu(
     val route: String = "",
-    val name: Int = R.string.label_nav_report_dashboard,
+    val name: Int = R.string.label_nav_home_dashboard,
     val iconActive: Int = R.drawable.nav_home_active,
     val iconInactive: Int = R.drawable.nav_home_inactive
 ) {
@@ -37,23 +37,23 @@ sealed class DashboardBottomNavigationMenu(
         iconInactive = R.drawable.nav_home_inactive
     )
 
-    object MenuCommunity : DashboardBottomNavigationMenu(
+    object MenuNews : DashboardBottomNavigationMenu(
         route = "",
-        name = R.string.label_nav_community_dashboard,
+        name = R.string.label_nav_news_dashboard,
         iconActive = R.drawable.nav_community_active,
         iconInactive = R.drawable.nav_community_inactive
     )
 
-    object MenuBudget : DashboardBottomNavigationMenu(
+    object MenuDigitalCard : DashboardBottomNavigationMenu(
         route = "",
-        name = R.string.label_nav_budget_dashboard,
+        name = R.string.label_nav_digitalcard_dashboard,
         iconActive = R.drawable.nav_budget_active,
         iconInactive = R.drawable.nav_budget_inactive
     )
 
-    object MenuReport : DashboardBottomNavigationMenu(
+    object MenuProfile : DashboardBottomNavigationMenu(
         route = "",
-        name = R.string.label_nav_report_dashboard,
+        name = R.string.label_nav_profile_dashboard,
         iconActive = R.drawable.nav_report_active,
         iconInactive = R.drawable.nav_report_inactive
     )
@@ -61,9 +61,9 @@ sealed class DashboardBottomNavigationMenu(
 
 var menus = listOf(
     DashboardBottomNavigationMenu.MenuHome,
-    DashboardBottomNavigationMenu.MenuCommunity,
-    DashboardBottomNavigationMenu.MenuBudget,
-    DashboardBottomNavigationMenu.MenuReport
+    DashboardBottomNavigationMenu.MenuNews,
+    DashboardBottomNavigationMenu.MenuDigitalCard,
+    DashboardBottomNavigationMenu.MenuProfile
 )
 
 

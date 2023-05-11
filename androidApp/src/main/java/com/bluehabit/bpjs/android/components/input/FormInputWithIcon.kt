@@ -43,13 +43,6 @@ fun FormInputWithIcon(
     Column(
         modifier = Modifier.fillMaxWidth(),
     ) {
-        Text(
-            text = label,
-            style = MaterialTheme.typography.subtitle2,
-            fontWeight = FontWeight.Normal,
-            color = MaterialTheme.colors.onSurface
-        )
-        Spacer(modifier = Modifier.height(6.dp))
         OutlinedTextField(
             value = value,
             readOnly = clickable,
@@ -61,17 +54,18 @@ fun FormInputWithIcon(
                     enabled = clickable,
                     onClick = onClick
                 ),
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                backgroundColor = Color(0xFFFAFAFA),
-                unfocusedBorderColor = Color(0xFFFAFAFA),
-                focusedBorderColor = MaterialTheme.colors.primary,
-                textColor = MaterialTheme.colors.onSurface,
-                disabledTextColor = MaterialTheme.colors.onSurface
-            ),
+            colors = TextFieldDefaults.outlinedTextFieldColors(),
             isError = error,
             placeholder = {
                 Text(
                     text = placeholder,
+                    style = MaterialTheme.typography.subtitle2,
+                    fontWeight = FontWeight.Normal
+                )
+            },
+            label={
+                Text(
+                    text = label,
                     style = MaterialTheme.typography.subtitle2,
                     fontWeight = FontWeight.Normal
                 )

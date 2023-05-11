@@ -5,7 +5,7 @@
   ~ Proprietary and confidential
   -->
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent rhoncus lectus fringilla dui varius pharetra nec eget nunc. Suspendisse a feugiat quam, a efficitur libero.Quisque ultricies mauris non nisi ullamcorper feugiat.Vestibulum ac lacinia erat, ut imperdiet dui. Nam ac orci eget velit facilisis interdum. Etiam lectus ipsum, finibus a tellus eget, laoreet sollicitudin purus. Suspendisse ac magna quam. Mauris dapibus, augue eget cursus auctor, est velit porta nibh, a congue urna odio nec turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean et quam ex. Maecenas non pellentesque ex, a accumsan leo. Sed mollis leo ipsum, a suscipit quam pellentesque at.\n
         Pellentesque condimentum sodales lectus in fermentum. Vestibulum cursus quis enim fringilla facilisis. Ut tellus eros, laoreet vitae ex a, tempor lacinia neque. In vestibulum arcu risus, in cursus metus malesuada ut. Mauris eget placerat quam. Donec vitae accumsan nibh, eu varius lectus. Vivamus ut urna lobortis, vehicula mi a, dapibus nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam ac quam venenatis, lacinia turpis at, molestie velit. Nullam porta est eget ipsum varius pulvinar ut eget ante. Donec lorem ex, rhoncus sed ipsum in, semper accumsan purus. Donec sed efficitur metus, quis ullamcorper mauris. Aliquam nec vehicula felis, vitae aliquam nunc. Curabitur lobortis a erat pellentesque. Fusce eu massa dolor. Aliquam nec bibendum risus, eu iaculis erat. \n
@@ -56,10 +56,10 @@
     <!--    end Input PIN dan Create PIN-->
 
     <!--    dashboard -->
-    <string name="label_nav_community_dashboard">Komunitas</string>
+    <string name="label_nav_news_dashboard">Berita</string>
     <string name="label_nav_home_dashboard">Home</string>
-    <string name="label_nav_budget_dashboard">Anggaran</string>
-    <string name="label_nav_report_dashboard">Laporan</string>
+    <string name="label_nav_digitalcard_dashboard">Kartu Digital</string>
+    <string name="label_nav_profile_dashboard">Profil Saya</string>
     <string name="title_card_remaining_budget_dashboard_home">Sisa Budget</string>
     <string name="text_card_used_budget_dashboard_home">terpakai</string>
     <string name="text_card_score_financial_dashboard_home">Skor kesehatan keuanganmu</string>

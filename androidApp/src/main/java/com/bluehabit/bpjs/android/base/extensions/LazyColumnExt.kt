@@ -7,6 +7,7 @@
 
 package com.bluehabit.bpjs.android.base.extensions
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
@@ -15,8 +16,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 
 fun LazyListScope.gridItems(
     count: Int,
@@ -42,7 +45,10 @@ fun <T> LazyListScope.gridItems(
 ) {
     val rows = if (data.isEmpty()) 0 else 1 + (data.count() - 1) / columnCount
     items(rows) { rowIndex ->
-        Row(horizontalArrangement = horizontalArrangement) {
+        Row(
+            horizontalArrangement = horizontalArrangement,
+            modifier = Modifier.background(MaterialTheme.colors.surface)
+        ) {
             for (columnIndex in 0 until columnCount) {
                 val itemIndex = rowIndex * columnCount + columnIndex
                 if (itemIndex < data.count()) {
@@ -89,7 +95,9 @@ fun <T> LazyListScope.gridItems(
     items(rows) { rowIndex ->
         Row(
             horizontalArrangement = horizontalArrangement,
-            modifier = Modifier.padding(paddingValues)
+            modifier = Modifier
+                .background(MaterialTheme.colors.surface)
+                .padding(paddingValues)
         ) {
             for (columnIndex in 0 until columnCount) {
                 val itemIndex = rowIndex * columnCount + columnIndex

@@ -58,13 +58,19 @@ object DataModule {
     )
 
     @Provides
-    fun provideDatabase(
+    fun provideDatabaseDriver(
         @ApplicationContext appContext: Context
     ): SqlDriver = AndroidSqliteDriver(
         BpjsDatabase.Schema,
         appContext,
         BuildConfig.DATABASE
     )
+
+    @Provides
+    fun provideDatabase(
+        sqlDriver: SqlDriver
+    ): BpjsDatabase = BpjsDatabase(sqlDriver)
+
 
     @Provides
     fun provideHttpClient(

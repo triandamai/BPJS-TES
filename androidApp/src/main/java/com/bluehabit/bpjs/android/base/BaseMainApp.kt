@@ -86,31 +86,7 @@ fun BaseMainApp(
                     },
                     snackbarHost = {
                         snackBar(appState)
-                    },
-                    isFloatingActionButtonDocked = true,
-                    floatingActionButton = {
-                        if (appState.showBottomAppBar) {
-                            FloatingActionButton(
-                                onClick = {
-                                    appState.event.onFab()
-                                },
-                                backgroundColor = MaterialTheme.colors.primary,
-                                elevation = FloatingActionButtonDefaults.elevation(
-                                    focusedElevation = 0.dp,
-                                    pressedElevation = 0.dp,
-                                    hoveredElevation = 0.dp,
-                                    defaultElevation = 0.dp
-                                )
-                            ) {
-                                Icon(
-                                    imageVector = FeatherIcons.Plus,
-                                    contentDescription = "",
-                                    tint = MaterialTheme.colors.onPrimary
-                                )
-                            }
-                        }
-                    },
-                    floatingActionButtonPosition = FabPosition.Center
+                    }
                 ) {
                     Column(
                         modifier = Modifier.padding(it)

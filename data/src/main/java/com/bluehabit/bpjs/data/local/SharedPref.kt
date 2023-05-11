@@ -43,6 +43,15 @@ class SharedPref(
         sharedPreferences.getString(tokenKey, "")
             .orEmpty()
 
+    fun setFirstRun() = sharedPreferences.edit {
+        putBoolean("firstRun", false)
+        apply()
+    }
+
+    fun getFirstRun(): Boolean {
+        return sharedPreferences.getBoolean("firstRun", true)
+    }
+
     fun setUserLoggedIn(
         token: String
     ) = sharedPreferences.edit {

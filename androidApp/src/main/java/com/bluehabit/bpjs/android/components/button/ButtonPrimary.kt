@@ -9,6 +9,7 @@ package com.bluehabit.bpjs.android.components.button
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
@@ -39,7 +40,9 @@ fun ButtonPrimary(
         onClick = onClick,
         modifier = properties
             .height(height),
-        shape = MaterialTheme.shapes.large,
+        shape = RoundedCornerShape(
+            size = 2.dp
+        ),
         colors = ButtonDefaults.buttonColors()
     ) {
         Text(

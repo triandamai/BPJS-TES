@@ -18,4 +18,5 @@ data class SplashDataState(
 ) : Parcelable
 
 sealed interface SplashEvent {
+    object CheckSession:SplashEvent
 }
