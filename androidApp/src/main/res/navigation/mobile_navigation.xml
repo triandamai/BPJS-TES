@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright © 2023 Blue Habit.
   ~
   ~ Unauthorized copying, publishing of this file, via any medium is strictly prohibited
@@ -10,7 +9,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_signin">
+    app:startDestination="@+id/navigation_splash">
+    <fragment
+        android:id="@+id/navigation_splash"
+        android:name="com.bluehabit.bpjs.android.featureXml.splash.SplashFragment"
+        android:label="@string/title_signin"
+        tools:layout="@layout/fragment_splash" />
     <fragment
         android:id="@+id/navigation_signin"
         android:name="com.bluehabit.bpjs.android.featureXml.auth.signIn.SignInFragment"
@@ -19,19 +23,43 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.bluehabit.bpjs.android.featureXml.home.HomeFragment"
+        android:name="com.bluehabit.bpjs.android.featureXml.dashboard.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.bluehabit.bpjs.android.featureXml.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_news"
+        android:name="com.bluehabit.bpjs.android.featureXml.dashboard.news.NewsFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_news" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.bluehabit.bpjs.android.featureXml.notifications.NotificationsFragment"
+        android:id="@+id/navigation_digital_card"
+        android:name="com.bluehabit.bpjs.android.featureXml.dashboard.digitalCard.DigitalCardFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_digital_card" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.bluehabit.bpjs.android.featureXml.dashboard.profile.ProfileFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_information"
+        android:name="com.bluehabit.bpjs.android.featureXml.programInformation.ProgramInformationFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_information" />
+
+
+    <fragment
+        android:id="@+id/navigation_detail_program"
+        android:name="com.bluehabit.bpjs.android.featureXml.detailProgram.DetailProgramFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_detail_program" >
+        <argument
+            android:name="ID"
+            app:argType="integer"
+            android:defaultValue="0"/>
+    </fragment>
 </navigation>

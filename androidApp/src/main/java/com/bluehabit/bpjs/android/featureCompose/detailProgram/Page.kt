@@ -100,12 +100,12 @@ internal fun ScreenDetailProgram(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Grey100)
+            .background(MaterialTheme.colors.surface)
     ) {
         Column(
             modifier = Modifier.padding(
                 all = 16.dp
-            )
+            ).background(Grey100)
         ) {
             HeaderDetailProgram(
                 title = dataState.program?.title.orEmpty(),

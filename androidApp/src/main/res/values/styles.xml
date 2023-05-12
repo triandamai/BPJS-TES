@@ -1,5 +1,5 @@
 <resources>
     <style name="AppTheme" parent="android:Theme.Material.NoActionBar"/>
 
-    <style name="XmlTheme" parent="Theme.AppCompat"/>
+    <style name="XmlTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge"/>
 </resources>

@@ -7,33 +7,99 @@
 
 package com.bluehabit.bpjs.android.featureXml.detailProgram
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.bluehabit.bpjs.android.R
+import com.bluehabit.bpjs.android.base.BaseFragment
+import com.bluehabit.bpjs.android.databinding.FragmentDetailProgramBinding
+import com.google.android.material.tabs.TabItem
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
+import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
-class DetailProgramFragment : Fragment() {
+@AndroidEntryPoint
+class DetailProgramFragment : BaseFragment<FragmentDetailProgramBinding>() {
 
-    companion object {
-        fun newInstance() = DetailProgramFragment()
-    }
+    private val viewModel by viewModels<DetailProgramViewModel>()
+    private var adapter = DetailAdapter()
 
-    private lateinit var viewModel: DetailProgramViewModel
+    override fun binding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentDetailProgramBinding =
+        FragmentDetailProgramBinding.inflate(inflater, container, false)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_detail_program, container, false)
+    ): View {
+        setBinding(
+            binding(
+                inflater,
+                container,
+                savedInstanceState
+            )
+        )
+        observeProgram()
+
+        binding.toolbar.setNavigationIcon(R.drawable.arrow_long_left)
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
+        val tab1 = binding.tabLayout.newTab()
+        val tab2 = binding.tabLayout.newTab()
+        tab1.text = "Manfaat"
+        tab2.text = "Besar Iuran"
+
+        binding.tabLayout.addTab(tab1)
+        binding.tabLayout.addTab(tab2)
+        binding.tabLayout.addOnTabSelectedListener(
+            object : OnTabSelectedListener {
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    viewModel.update(tab?.id == tab1.id)
+                }
+
+                override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+                }
+
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+
+                }
+
+            }
+        )
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DetailProgramViewModel::class.java)
-        // TODO: Use the ViewModel
+    private fun observeProgram() = with(binding) {
+        rvDetail.adapter = adapter
+
+        lifecycleScope.launch {
+            viewModel.program.collect {
+                it?.let {
+                    toolbar.title = it.title
+                    tvNameHeader.text = it.title
+                    tvSubtitleHeader.text = if (it.available) "Anda sudah terdaftar di layanan ini"
+                    else "Anda belum terdaftar di layanan ini"
+                    ivAvailableHeader.isVisible = it.available
+                    ivIconHeader.setImageResource(it.icon)
+                    adapter.updateData(if (viewModel.isBenefit) it.benefit else it.contribution)
+
+                }
+            }
+        }
+        lifecycleScope.launch {
+            viewModel.list.collect {
+                adapter.updateData(it)
+            }
+        }
     }
+
 
 }

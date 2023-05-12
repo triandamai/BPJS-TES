@@ -5,7 +5,7 @@
  * Proprietary and confidential
  */
 
-package com.bluehabit.bpjs.android.featureXml.notifications
+package com.bluehabit.bpjs.android.featureXml.programInformation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,19 +14,25 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.bluehabit.bpjs.android.R
 import com.bluehabit.bpjs.android.base.BaseFragment
-import com.bluehabit.bpjs.android.databinding.FragmentNotificationsBinding
+import com.bluehabit.bpjs.android.databinding.FragmentInformationBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class NotificationsFragment : BaseFragment<FragmentNotificationsBinding>() {
-    private val viewModel by viewModels<NotificationsViewModel>()
+class ProgramInformationFragment : BaseFragment<FragmentInformationBinding>() {
+    private val viewModel by viewModels<ProgramInformationViewModel>()
+    private val informationAdapter = InformationAdapter()
+
     override fun binding(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): FragmentNotificationsBinding = FragmentNotificationsBinding
+    ): FragmentInformationBinding = FragmentInformationBinding
         .inflate(inflater, container, false)
 
 
@@ -36,22 +42,33 @@ class NotificationsFragment : BaseFragment<FragmentNotificationsBinding>() {
         savedInstanceState: Bundle?
     ): View {
 
-        binding(
-            inflater,
-            container,
-            savedInstanceState
+        setBinding(
+            binding(
+                inflater,
+                container,
+                savedInstanceState
+            )
         )
-        val root: View = binding.root
+        binding.toolbar.setNavigationIcon(R.drawable.arrow_long_left)
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
+        setupProgram()
+        return binding.root
+    }
 
-        val textView: TextView = binding.textNotifications
-
+    private fun setupProgram() = with(binding) {
+        rvInformation.adapter = informationAdapter
+        rvInformation.layoutManager = LinearLayoutManager(
+            requireContext(),
+            RecyclerView.VERTICAL,
+            false
+        )
         lifecycleScope.launch {
-            viewModel.uiState.collect {
-                textView.text = it
+            viewModel.program.collect {
+                informationAdapter.updateData(it)
             }
         }
-
-        return root
     }
 
     override fun onDestroyView() {

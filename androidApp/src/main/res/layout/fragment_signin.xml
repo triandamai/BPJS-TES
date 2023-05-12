@@ -22,12 +22,11 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo_budgetku" />
+        android:src="@drawable/logo_jmo" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/TextAppearance.AppCompat.Title"
         android:text="Login" />
 
     <TextView
@@ -40,13 +39,14 @@
         android:orientation="vertical"
         android:layout_marginVertical="16dp">
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/et_email"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email Anda"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -54,7 +54,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/et_password"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -62,6 +62,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -92,16 +93,14 @@
     </RelativeLayout>
 
     <Button
+        android:id="@+id/btn_sign_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:theme="@style/TextAppearance.AppCompat.Button"/>
+        android:text="Login"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Buat Akun"
-        android:theme="@style/TextAppearance.AppCompat.Button"
-        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+        android:text="Buat Akun"/>
 
 </LinearLayout>

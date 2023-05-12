@@ -98,85 +98,89 @@ android {
 }
 
 dependencies {
-    implementation(project(":data"))
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
-    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    with(libs) {
+        implementation(project(":data"))
 
-    coreLibraryDesugaring(libs.desugar.jdk.lib)
+        implementation(appcompat)
+        implementation(constraint.layout)
+        implementation(viemodel.ktx)
+        implementation(navigation.fragment)
+        implementation(navigation.ui)
+        implementation(recyclerview)
 
-    implementation(libs.android.material)
 
-    implementation(libs.core.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.activity.compose)
-    implementation(platform(libs.compose.bom))
-    implementation(libs.ui)
-    implementation(libs.ui.graphics)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.compose.material)
-    implementation(libs.compose.calendar)
-    implementation(libs.wheel.picker.compose)
-    implementation(libs.coil.compose)
-    implementation(libs.navigation.compose)
-    implementation(libs.multidex)
 
-    with(libs.accompanist) {
-        implementation(pager)
-        implementation(pager.indicator)
-        implementation(flow.layout)
-        implementation(shimmer)
-    }
+        coreLibraryDesugaring(desugar.jdk.lib)
 
-    with(libs.hilt) {
+        implementation(android.material)
+
+        implementation(core.ktx)
+        implementation(lifecycle.runtime.ktx)
+        implementation(activity.compose)
+        implementation(platform(libs.compose.bom))
+        implementation(ui)
+        implementation(ui.graphics)
+        implementation(ui.tooling.preview)
+        implementation(compose.material)
+        implementation(compose.calendar)
+        implementation(wheel.picker.compose)
+        implementation(coil.compose)
         implementation(navigation.compose)
-        implementation(android)
-        implementation(work)
-        androidTestImplementation(android.test)
-        kapt(android.compiler)
-        kaptTest(android.compiler)
-        kapt(compiler)
+        implementation(multidex)
+
+        with(accompanist) {
+            implementation(pager)
+            implementation(pager.indicator)
+            implementation(flow.layout)
+            implementation(shimmer)
+        }
+
+        with(hilt) {
+            implementation(navigation.compose)
+            implementation(android)
+            implementation(work)
+            androidTestImplementation(android.test)
+            kapt(android.compiler)
+            kaptTest(android.compiler)
+            kapt(compiler)
+        }
+        with(gms.play.service) {
+            implementation(auth)
+            implementation(base)
+        }
+        implementation(work.runtime)
+
+        with(kotlinx.coroutine) {
+            implementation(android)
+            implementation(core)
+            implementation(play.services)
+            testImplementation(test)
+        }
+
+        with(composeIcons) {
+            implementation(feather)
+        }
+
+        with(chuker) {
+            debugApi(debug)
+            releaseApi(release)
+        }
+
+        implementation(mp.android.chart)
+
+        testImplementation(junit)
+        androidTestImplementation(androidx.test.ext.junit)
+        androidTestImplementation(espresso.core)
+        androidTestImplementation(platform(compose.bom))
+        androidTestImplementation(ui.test.junit4)
+        testImplementation(ui.test.junit4)
+        debugImplementation(ui.tooling)
+        debugImplementation(ui.test.manifest)
+        testImplementation(robolectric)
+
+        debugImplementation(leak.canary)
+
     }
-    with(libs.gms.play.service) {
-        implementation(auth)
-        implementation(base)
-    }
-    implementation(libs.work.runtime)
-
-    with(libs.kotlinx.coroutine) {
-        implementation(android)
-        implementation(core)
-        implementation(play.services)
-        testImplementation(test)
-    }
-
-    with(libs.composeIcons){
-        implementation(feather)
-    }
-
-    with(libs.chuker){
-        debugApi(debug)
-        releaseApi(release)
-    }
-
-    implementation(libs.mp.android.chart)
-
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.espresso.core)
-    androidTestImplementation(platform(libs.compose.bom))
-    androidTestImplementation(libs.ui.test.junit4)
-    testImplementation(libs.ui.test.junit4)
-    debugImplementation(libs.ui.tooling)
-    debugImplementation(libs.ui.test.manifest)
-    testImplementation(libs.robolectric)
-
-    debugImplementation(libs.leak.canary)
-
 }
 kapt {
     correctErrorTypes = true

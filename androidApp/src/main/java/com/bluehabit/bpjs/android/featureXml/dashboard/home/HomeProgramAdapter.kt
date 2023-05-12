@@ -9,74 +9,49 @@ package com.bluehabit.bpjs.android.featureXml.dashboard.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bluehabit.bpjs.android.databinding.ItemProgramBinding
-import com.bluehabit.bpjs.android.databinding.ItemServicesBinding
-import com.bluehabit.bpjs.data.model.HomeModel
-import com.bluehabit.bpjs.data.model.RV_ITEM_TYPE
+import com.bluehabit.bpjs.data.model.Program
 
 
-class HomeServicesViewHolder(val view: ItemServicesBinding) : RecyclerView.ViewHolder(view.root) {}
-class HomeProgramViewHolder(val view: ItemProgramBinding) : RecyclerView.ViewHolder(view.root) {}
-class HomeAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var items: List<HomeModel> = listOf()
+class HomeProgramViewHolder(val view: ItemProgramBinding) : RecyclerView.ViewHolder(view.root) {
 
-    override fun getItemViewType(position: Int): Int {
-        return when (items[position].type) {
-            RV_ITEM_TYPE.PROGRAM -> 1
-            RV_ITEM_TYPE.OTHER_SERVICES -> 2
-            RV_ITEM_TYPE.OTHER -> 3
-            else -> super.getItemViewType(position)
-        }
-
+    fun bind(data: Program) = with(view) {
+        lyParent.setOnClickListener { }
+        ivAvailable.isVisible = data.available
+        tvName.text = data.title
+        ivIcon.setImageResource(data.icon)
+        tvSubtitle.text = if (data.available) "Anda Sudah terdaftar di layanan ini" else
+            "Anda belum terdaftra di layanan ini"
     }
+}
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return when (viewType) {
-            1 -> HomeProgramViewHolder(
-                ItemProgramBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
-            )
+class HomeProgramAdapter() : RecyclerView.Adapter<HomeProgramViewHolder>() {
+    private var items: List<Program> = listOf()
 
-            2 -> HomeServicesViewHolder(
-                ItemServicesBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
-            )
 
-            else -> HomeProgramViewHolder(
-                ItemProgramBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeProgramViewHolder =
+        HomeProgramViewHolder(
+            ItemProgramBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
             )
-        }
-    }
+        )
+
 
     override fun getItemCount(): Int = items.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: HomeProgramViewHolder, position: Int) {
         val data = items[position]
 
-        when (data.type) {
-            RV_ITEM_TYPE.PROGRAM -> {
+        holder.bind(data)
 
-            }
+    }
 
-            RV_ITEM_TYPE.OTHER_SERVICES -> {
-
-            }
-
-            RV_ITEM_TYPE.OTHER -> {
-
-            }
-        }
+    fun updateDate(data: List<Program>) {
+        items = data
+        notifyDataSetChanged()
     }
 }

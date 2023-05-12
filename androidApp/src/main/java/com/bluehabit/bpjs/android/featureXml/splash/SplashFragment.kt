@@ -5,7 +5,7 @@
  * Proprietary and confidential
  */
 
-package com.bluehabit.bpjs.android.featureXml
+package com.bluehabit.bpjs.android.featureXml.splash
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -13,27 +13,30 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bluehabit.bpjs.android.R
+import com.bluehabit.bpjs.android.base.BaseFragment
+import com.bluehabit.bpjs.android.databinding.FragmentSplashBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class SplashFragment : Fragment() {
+@AndroidEntryPoint
+class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
-    companion object {
-        fun newInstance() = SplashFragment()
-    }
 
-    private lateinit var viewModel: SplashViewModel
+    private val viewModel by viewModels<SplashViewModel>()
+    override fun binding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): FragmentSplashBinding =
+        FragmentSplashBinding.inflate(inflater, container, false)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_splash, container, false)
+    ): View {
+        setBinding(binding(inflater, container, savedInstanceState))
+        requireActivity().actionBar?.hide()
+        findNavController().navigate(R.id.navigation_signin)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SplashViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }

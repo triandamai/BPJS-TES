@@ -13,13 +13,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.bluehabit.bpjs.android.R
 import com.bluehabit.bpjs.android.base.BaseFragment
 import com.bluehabit.bpjs.android.databinding.FragmentSigninBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class SignInFragment : BaseFragment< FragmentSigninBinding>() {
+class SignInFragment : BaseFragment<FragmentSigninBinding>() {
     private val viewModel by viewModels<SignInViewModel>()
     override fun binding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
             : FragmentSigninBinding = FragmentSigninBinding.inflate(
@@ -28,17 +30,25 @@ class SignInFragment : BaseFragment< FragmentSigninBinding>() {
         false
     )
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding(
-            inflater,container,savedInstanceState
+    ): View {
+        setBinding(
+            binding(
+                inflater, container, savedInstanceState
+            )
         )
-        lifecycleScope.launch {
-            viewModel.uiState.collect {
 
+        binding.btnSignIn.setOnClickListener {
+
+            viewModel.signIn(
+                binding.etEmail.text.toString(),
+                binding.etPassword.text.toString()
+            ) { success, message ->
+                if (success) {
+                    findNavController().navigate(R.id.navigation_home)
+                }
             }
         }
         return binding.root

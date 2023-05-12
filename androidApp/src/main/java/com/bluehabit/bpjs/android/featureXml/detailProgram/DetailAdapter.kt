@@ -5,7 +5,7 @@
  * Proprietary and confidential
  */
 
-package com.bluehabit.bpjs.android.featureXml.detailProgram.tabContentFragment
+package com.bluehabit.bpjs.android.featureXml.detailProgram
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
